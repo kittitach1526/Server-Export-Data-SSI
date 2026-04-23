@@ -43,7 +43,7 @@ def fetch_power_today(condition: str, limit=100):
     if 'timestamp' in df.columns:
         # เก็บค่า timestamp ดั้งเดิมไว้ sort ก่อน แล้วค่อยเปลี่ยนเป็น string
         df = df.sort_values("timestamp") 
-        df['timestamp'] = df['timestamp'] + timedelta(hours=7)
+        df['timestamp'] = df['timestamp']
         df['timestamp'] = df['timestamp'].dt.strftime("%H:%M:%S")
 
     # 4. จัดลำดับคอลัมน์ (Priority Sorting)
@@ -99,7 +99,7 @@ def fetch_power_weekly(condition: str, limit=500):
     if 'timestamp' in df.columns:
         df = df.sort_values("timestamp")
         # ใช้ Format: 2026-04-10 13:15:00
-        df['timestamp'] = df['timestamp'] + timedelta(hours=7)
+        df['timestamp'] = df['timestamp']
         df['timestamp'] = df['timestamp'].dt.strftime("%Y-%m-%d %H:%M:%S")
 
     # 5. จัดลำดับคอลัมน์ (Priority Sorting)
@@ -153,7 +153,7 @@ def fetch_power_monthly(condition: str, limit=1000):
         # เรียงลำดับก่อนแปลงเป็น String เพื่อให้ลำดับในกราฟไม่เพี้ยน
         df = df.sort_values("timestamp")
         # Format: 2026-04-10 13:15:00
-        df['timestamp'] = df['timestamp'] + timedelta(hours=7)
+        df['timestamp'] = df['timestamp']
         df['timestamp'] = df['timestamp'].dt.strftime("%Y-%m-%d %H:%M:%S")
 
     # 5. จัดลำดับคอลัมน์ (Priority Sorting)

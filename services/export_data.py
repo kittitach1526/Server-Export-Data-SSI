@@ -48,7 +48,7 @@ def fetch_range(condition: str, start_str: str = None, end_str: str = None):
     if 'timestamp' in df.columns:
         df['timestamp'] = pd.to_datetime(df['timestamp'])
         df = df.sort_values("timestamp") 
-        df['timestamp'] = df['timestamp'] + timedelta(hours=7)
+        df['timestamp'] = df['timestamp']
         # ถ้าเลือกช่วงหลายวัน ควรมี วันที่ติดไปด้วยใน CSV
         df['timestamp'] = df['timestamp'].dt.strftime("%Y-%m-%d %H:%M:%S")
 
